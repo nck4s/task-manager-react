@@ -1,26 +1,54 @@
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Funnel Display", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f5f5f5;
+  background-color: #c1adce;
 }
 
 .container {
-  background: white;
+  background: #a589b9;
+  width: 90%;
+  max-width: 800px;
+  min-height: 200px;
+  height: auto;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 input {
+  font-family: "Funnel Display", sans-serif;
   padding: 8px;
   margin-right: 10px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+
 }
 
+
 button {
+  font-family: "Funnel Display", sans-serif;
   padding: 8px 12px;
   margin-left: 5px;
   cursor: pointer;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+button:hover {
+  background-color: #f0dcfe;
+}
+
+.task-form {
+  display: flex;
+  gap: 10px; /* Adds spacing between input and button */
+  justify-content: center;
+}
+
+.task-list {
+  margin-top: 30px; /* Moves tasks lower */
 }
