@@ -11,7 +11,7 @@ const TaskItem = ({ task }) => {
       >
         {task.text}
       </span>
-      <button onClick={() => dispatch({ type: "REMOVE_TASK", payload: task.id })}>Delete</button>
+      <button onClick={() => dispatch({ type: "REMOVE_TASK", payload: task.id })}>🗑️</button>
     </li>
   );
 };

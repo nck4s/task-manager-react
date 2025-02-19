@@ -1,11 +1,11 @@
-import { createContext, useReducer, useContext } from "react";
+import { createContext, useReducer, useContext, useEffect } from "react";
 
-// 🎯 Initial state
+// 🎯 Загружаем данные из localStorage
 const initialState = {
-  tasks: [],
+  tasks: JSON.parse(localStorage.getItem("tasks")) || [],
 };
 
-// 🎯 Reducer function
+// 🎯 Редьюсер
 function taskReducer(state, action) {
   switch (action.type) {
     case "ADD_TASK":
@@ -23,12 +23,16 @@ function taskReducer(state, action) {
   }
 }
 
-// 🎯 Create Context
+// 🎯 Контекст
 const TaskContext = createContext();
 
-// 🎯 Provider Component
 export function TaskProvider({ children }) {
   const [state, dispatch] = useReducer(taskReducer, initialState);
+
+  // ✅ Сохраняем в localStorage при каждом изменении задач
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(state.tasks));
+  }, [state.tasks]); // Запускается при изменении tasks
 
   return (
     <TaskContext.Provider value={{ tasks: state.tasks, dispatch }}>
@@ -37,7 +41,6 @@ export function TaskProvider({ children }) {
   );
 }
 
-// 🎯 Custom hook to use context
 export function useTaskContext() {
   return useContext(TaskContext);
 }
